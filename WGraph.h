@@ -1,33 +1,33 @@
-// File: include/WGraph.h
 #ifndef WGRAPH_H
 #define WGRAPH_H
 
 #include <vector>
 
-// Simple edge representation
+using namespace std;
+
+
 struct Edge {
-    int u;           // source vertex
-    int v;           // destination vertex
-    double weight;   // edge weight
+    int u, v;    // endpoints
+    double weight; // edge cost
 };
 
 class WGraph {
 public:
-    // Construct an empty graph with n vertices
-    WGraph(int n);
+    // init graph for n vertices
+    explicit WGraph(int n);
 
-    // Build graph from an adjacency matrix
-    void buildFromMatrix(const std::vector<std::vector<double>>& matrix);
+    // build edge list from full matrix (upper triangle)
+    void buildFromMatrix(const vector<vector<double>>& matrix);
 
-    // Return all edges (u < v) to avoid duplicates
-    std::vector<Edge> getEdges() const;
+    // retrieve edge list
+    vector<Edge> getEdges() const;
 
-    // Get number of vertices
+    // vertex count
     int getNumVertices() const;
 
 private:
-    int numVertices;
-    std::vector<Edge> edges;
+    int numVertices;         // node count
+    vector<Edge> edges; // collected edges
 };
 
 #endif // WGRAPH_H

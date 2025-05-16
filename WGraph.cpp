@@ -1,33 +1,28 @@
+
+
+// source: build and expose weighted edges
 #include "WGraph.h"
-#include <vector>
 
-using namespace std;
-
-
-WGraph::WGraph(int n) : numVertices(n){
-    edges.clear();
+WGraph::WGraph(int n) : numVertices(n) {
+    edges.clear();  // start fresh
 }
 
 void WGraph::buildFromMatrix(const vector<vector<double>>& matrix) {
-    edges.clear();
+    edges.clear();  // reset edge list
     for (int i = 0; i < numVertices; ++i) {
         for (int j = i + 1; j < numVertices; ++j) {
             double w = matrix[i][j];
-            if (w > 0) {
-                Edge e;
-                e.u = i;
-                e.v = j;
-                e.weight = w;
-                edges.push_back(e);
+            if (w > 0) {    // skip misses
+                edges.push_back({i, j, w});
             }
         }
     }
 }
 
 vector<Edge> WGraph::getEdges() const {
-    return edges;
+    return edges;  // by value for simplicity
 }
 
 int WGraph::getNumVertices() const {
-    return numVertices;
+    return numVertices;  // node count
 }
