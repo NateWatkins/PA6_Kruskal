@@ -24,10 +24,10 @@ void WGraph::buildFromMatrix(const vector<vector<double>>& matrix) {
     }
 }
 
-vector<Edge> WGraph::getEdges() const {
+vector<Edge> WGraph::getEdges() {
     return edges;  // by value for simplicity
 }
 
-int WGraph::getNumVertices() const {
+int WGraph::getNumVertices() {
     return numVertices;  // node count
 }

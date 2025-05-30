@@ -25,10 +25,10 @@ public:
     void buildFromMatrix(const vector<vector<double>>& matrix);
 
     // retrieve edge list
-    vector<Edge> getEdges() const;
+    vector<Edge> getEdges();
 
     // vertex count
-    int getNumVertices() const;
+    int getNumVertices();
 
 private:
     int numVertices;         // node count
